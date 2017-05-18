@@ -1,0 +1,17 @@
+com\niit\ca\model\Category.class
+com\niit\ca\controller\UserController.class
+com\niit\ca\DAO\CategoryDAO.class
+com\niit\ca\DAO\ProductDAO.class
+com\niit\ca\DAOImpl\ProductDAOImpl.class
+com\niit\ca\model\User.class
+com\niit\ca\controller\CategoryController.class
+com\niit\ca\DAOImpl\SupplierDAOImpl.class
+com\niit\ca\controller\SupplierController.class
+com\niit\ca\model\Supplier.class
+com\niit\ca\controller\ProductController.class
+com\niit\ca\controller\ViewsController.class
+com\niit\ca\DAOImpl\CategoryDAOImpl.class
+com\niit\ca\DAO\SupplierDAO.class
+com\niit\ca\DAO\UserDAO.class
+com\niit\ca\DAOImpl\UserDAOImpl.class
+com\niit\ca\model\Product.class
