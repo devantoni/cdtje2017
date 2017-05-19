@@ -1,5 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -61,10 +62,11 @@
 			<div class="col-md-12">
 				<div class="well well-sm">
 					<form:form modelAttribute="ProductObject" action="addproduct"
-						method="post" enctype="multipart/form-data">
+						enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
+									
 									<form:input type="text" class="form-control"
 										placeholder="Product Name" path="productname" required="true"></form:input>
 								</div>
@@ -102,50 +104,60 @@
 									</form:select>
 								</div>
 								<div class="form-group">
-							<form:input type="file" name="fileToUpload" id="fileToUpload"
-								path="PImage" required="true"></form:input>
-						</div>
-
+									<form:input type="file" name="fileToUpload" id="fileToUpload"
+										path="PImage" required="true"></form:input>
+								</div>
+								<c:if test="${check}">
+									<form:button id="editbuttons" type="submit" name="Add"
+										class="btn">Add
+							Details</form:button>
+									<form:button id="removebuttons" type="reset" class="btn">Reset
+							Details</form:button>
+								</c:if>
+								<c:if test="${!check}">
+									<form:button id="editbuttons" type="submit" name="Edit"
+										class="btn">Edit
+							Details</form:button>
+									<form:button id="removebuttons" type="reset" class="btn">Reset
+							Details</form:button>
+								</c:if>
 							</div>
 
-							<div class="col-md-12">
-								<button type="submit" class="btn btn-primary pull-right"
-									id="btnProduct">Create Product</button>
-							</div>
+							
 						</div>
 					</form:form>
 				</div>
 			</div>
 		</div>
-		
-<div class="panel-body">
-				<ul class="list-group">
-					<li class="list-group-item" height="45px"
-						ng-repeat="product in productangularobject">
-						<table style="width: 100%">
-							<tr>
-								<td><img style="width:125px ;height:150px" src="resources/Pimage/{{product.productid}}.jpg" />
-								</td>
-								<td>
-									<ul>
-										<li><span><b>Product Id: </b></span>{{product.productid}}</li>
-										<li><span><b>Product Name: </b></span>{{product.productname}}</li>
-										<li><span><b>Product Price: </b></span>{{product.productprice}}</li>
-										<li><span><b>Product Stock: </b></span>{{product.productinv}}</li>
-										<li><span><b>Product SKU: </b></span>{{product.productsku}}</li>
-										<li><span><b>Supplier Id: </b></span>{{product.SupplierId}}</li>
-										<li><span><b>Category Id: </b></span>{{product.CategoryId}}</li>
-									</ul>
-								</td>
-								<td><a href="editingproduct?getpid={{product.ProductId}}"><button id="editbuttons"
-											type="submit" class="btn">Edit</button></a> <a
-									href="removingproduct/{{product.ProductId}}"><button id="removebuttons"
-											type="button" class="btn">Remove</button></a></td>
-							</tr>
-						</table>
-					</li>
-				</ul>
-			</div>
+
+		<div class="panel-body">
+			<ul class="list-group">
+				<li class="list-group-item" height="45px"
+					ng-repeat="product in productangularobject">
+					<table style="width: 100%">
+						<tr>
+							<td><img style="width: 125px; height: 150px"
+								src="resources/Pimage/{{product.productid}}.jpg" /></td>
+							<td>
+								<ul>
+									<li><span><b>Product Id: </b></span>{{product.productid}}</li>
+									<li><span><b>Product Name: </b></span>{{product.productname}}</li>
+									<li><span><b>Product Price: </b></span>{{product.productprice}}</li>
+									<li><span><b>Product Stock: </b></span>{{product.productinv}}</li>
+									<li><span><b>Product SKU: </b></span>{{product.productsku}}</li>
+									<li><span><b>Supplier Id: </b></span>{{product.SupplierId}}</li>
+									<li><span><b>Category Id: </b></span>{{product.CategoryId}}</li>
+								</ul>
+							</td>
+							<td><a href="editingproduct?getpid={{product.productid}}"><button
+										id="editbuttons" type="submit" class="btn">Edit</button></a> <a
+								href="removingproduct/{{product.productid}}"><button
+										id="removebuttons" type="button" class="btn">Remove</button></a></td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</div>
 		<hr>
 
 		<footer>

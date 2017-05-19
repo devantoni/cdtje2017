@@ -41,21 +41,8 @@ public class ViewsController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/category")
-	public ModelAndView gotocategory(Category c)
-	{
-		ModelAndView mv=new ModelAndView("category");
-		mv.addObject("Category", new Category());
-		return mv;
-	}
 	
-	@RequestMapping(value="/supplier")
-	public ModelAndView gotosupplier(Supplier s)
-	{
-		ModelAndView mv=new ModelAndView("supplier");
-		mv.addObject("Supplier", new Supplier());
-		return mv;
-	}
+	
 	
 	
 }

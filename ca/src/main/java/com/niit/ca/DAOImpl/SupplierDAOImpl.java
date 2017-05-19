@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.google.gson.Gson;
 import com.niit.ca.DAO.SupplierDAO;
+import com.niit.ca.model.Category;
 import com.niit.ca.model.Product;
 import com.niit.ca.model.Supplier;
 
@@ -32,13 +33,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		
 	}
 
-	@Override
-	public String read_supplier(Supplier supplierid) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public String update_supplier(Supplier supplierid) {
 		return null;
@@ -47,16 +42,17 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Override
-	public String delete_supplier(Supplier supplierid) {
-		return null;
+	public String delete_supplier(int supplierid) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String readsingle_supplier(Supplier supplierid) {
+		System.out.println(supplierid);
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		Supplier c =  (Supplier)s.get(Supplier.class, supplierid);
+		s.delete(c);
+		t.commit();
+		s.close();
 		return null;
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -72,6 +68,12 @@ public class SupplierDAOImpl implements SupplierDAO {
 		t.commit();
 		s.close();
 		return supplierlistgson;
+	}
+
+	@Override
+	public Category viewOneCategory(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

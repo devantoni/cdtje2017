@@ -28,9 +28,17 @@
 	<script src="resources/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<header>
-		<!-- Fixed navbar -->
-		<jsp:include page="menu.jsp"></jsp:include>
+	<script src="resources/angular/angular.js"></script>
+
+	<script>
+		var cat = ${categorylist};
+
+		angular.module('niit.ca', []).controller('CategoryController',
+				function($scope) {
+					$scope.categoryangularobject = cat;
+				});
+	</script>
+	<header> <!-- Fixed navbar --> <jsp:include page="menu.jsp"></jsp:include>
 	</header>
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
@@ -48,20 +56,23 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well well-sm">
-					<form:form modelAttribute="Category" action="addcategory" method="post">
+					<form:form modelAttribute="Category" action="addcategory"
+						method="post">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<form:input type="text" class="form-control"
-										placeholder="Category Name" path="categoryname" required="true"></form:input>
+										placeholder="Category Name" path="categoryname"
+										required="true"></form:input>
 								</div>
 								<div class="form-group">
 									<form:input type="textarea" class="form-control"
-										placeholder="Category Description" path="categorydescriptions" required="true"></form:input>
+										placeholder="Category Description" path="categorydescriptions"
+										required="true"></form:input>
 								</div>
 
 							</div>
-							
+
 							<div class="col-md-12">
 								<button type="submit" class="btn btn-primary pull-right"
 									id="btnCategory">Create Category</button>
@@ -71,11 +82,41 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="panel-heading">
+						<span class="lead">List Of Categories</span>
+					</div>
+					<div class="panel-body" ng-app="niit.ca"
+						ng-controller="CategoryController" >
+						<ul class="list-group ">
+							<li class="list-group-item"	ng-repeat="c in categoryangularobject">
+							<div class="row">
+								<div class="col-md-8">
+									<ul class="list-inline">
+										<li><span><b>Category Id: </b></span>{{c.categoryid}}</li>
+										<li><span><b>Category Name: </b></span>{{c.categoryname}}</li>
+										<li><span><b>Category Description: </b></span>{{c.categorydescriptions}}</li>
+									</ul>
+								</div>
+								<div class="col-md-4 align-left">
+									<a href="editcategorybutton?getcid={{c.categoryid}}"><button
+											id="editbuttons" type="submit" class="btn">Edit</button></a> <a
+										href="removingcategory/{{c.categoryid}}"><button
+											id="removebuttons" type="button" class="btn">Remove</button></a>
+								</div>
+							</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 		<hr>
 
 		<footer>
-			<p>&copy; 2016 Company, Inc.</p>
+		<p>&copy; 2016 Company, Inc.</p>
 		</footer>
 	</div>
 	<!-- /container -->

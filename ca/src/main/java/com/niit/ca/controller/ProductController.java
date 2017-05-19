@@ -76,13 +76,13 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/editingproduct")
-	public ModelAndView gotoeditproduct(@RequestParam("getpid") String productid) {
+	public ModelAndView gotoeditproduct(@RequestParam("getpid") int productid) {
 		String productlist = prdao.viewProduct();
 		String categorylist = cdao.viewCategory();
 		String supplierlist = sdao.viewSupplier();
 
 		ModelAndView mv = new ModelAndView("product");
-		mv.addObject("ProductObject", new Product());
+		mv.addObject("ProductObject", prdao.viewOneProduct(productid));
 		mv.addObject("productlist", productlist);
 		mv.addObject("supplierslist", supplierlist);
 		mv.addObject("categorylist", categorylist);

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,8 +19,19 @@ public class SupplierController {
 	@Autowired
 	SupplierDAO sdao;
 
+	@RequestMapping(value="/supplier")
+	public ModelAndView gotosupplier(Supplier s)
+	{
+		String supplierlist = sdao.viewSupplier();
+		
+		ModelAndView mv=new ModelAndView("supplier");
+		mv.addObject("Supplier", new Supplier());
+		mv.addObject("supplierlist", supplierlist);
+		mv.addObject("check","true");
+		return mv;
+	}
 	@RequestMapping(value = "/addsupplier", method = RequestMethod.POST)
-	public ModelAndView insert_supplier(@Valid @ModelAttribute("Supplier") Supplier s) {
+	public String insert_supplier(@Valid @ModelAttribute("Supplier") Supplier s) {
 
 		System.out.println("entered supplier module");
 		ModelAndView mv = new ModelAndView("supplier");
@@ -31,7 +43,11 @@ public class SupplierController {
 		System.out.println("yippee");
 
 		System.out.println("see u at login");
-		return mv;
-
+		return "redirect:/supplier";
+	}
+	@RequestMapping("removingsupplier/{supplierid}")
+	public String removesupplier(@PathVariable("supplierid") int supplierid) {
+		sdao.delete_supplier(supplierid);
+		return "redirect:/supplier";
 	}
 }

@@ -8,9 +8,9 @@ import com.niit.ca.model.Category;
 public interface CategoryDAO {
 
 	public String insert_category(Category c);
-	public String read_category(Category c);
-	public String readsingle_category(Category c);
 	public String update_category(Category c);
-	public String delete_category(Category c);
+	public String delete_category(int categoryid);
 	public String viewCategory();
+	public Category viewOneCategory(int id);
+
 }

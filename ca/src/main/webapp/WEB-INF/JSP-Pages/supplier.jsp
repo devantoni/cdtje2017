@@ -28,6 +28,16 @@
 	<script src="resources/jquery/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/angular/angular.js"></script>
+
+	<script>
+		var sup = ${supplierlist};
+
+		angular.module('niit.ca', []).controller('SupplierController',
+				function($scope) {
+					$scope.supplierangularobject = sup;
+				});
+	</script>
 	<header>
 		<!-- Fixed navbar -->
 		<jsp:include page="menu.jsp"></jsp:include>
@@ -50,7 +60,7 @@
 				<div class="well well-sm">
 					<form:form modelAttribute="Supplier" action="addsupplier" method="post">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<form:input type="text" class="form-control"
 										placeholder="Supplier Name" path="suppliername" required="true"></form:input>
@@ -71,7 +81,37 @@
 				</div>
 			</div>
 		</div>
-
+<div class="row">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="panel-heading">
+						<span class="lead">List Of Suppliers</span>
+					</div>
+					<div class="panel-body" ng-app="niit.ca"
+						ng-controller="SupplierController" >
+						<ul class="list-group ">
+							<li class="list-group-item"	ng-repeat="s in supplierangularobject">
+							<div class="row">
+								<div class="col-md-8">
+									<ul class="list-inline">
+										<li><span><b>Supplier Id: </b></span>{{s.supplierid}}</li>
+										<li><span><b>Supplier Name: </b></span>{{s.suppliername}}</li>
+										<li><span><b>Supplier Email: </b></span>{{s.supplieremail}}</li>
+									</ul>
+								</div>
+								<div class="col-md-4 align-left">
+									<a href="editsupplierbutton?getsid={{s.supplierid}}"><button
+											id="editbuttons" type="submit" class="btn">Edit</button></a> <a
+										href="removingsupplier/{{s.supplierid}}"><button
+											id="removebuttons" type="button" class="btn">Remove</button></a>
+								</div>
+							</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 		<hr>
 
 		<footer>

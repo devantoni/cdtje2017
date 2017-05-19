@@ -32,33 +32,36 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	}
 
+	
+
 	@Override
-	public String read_category(Category categoryid) {
-		return null;
+	public String update_category(Category c) {
 		// TODO Auto-generated method stub
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		s.update(c);
+		t.commit();
+		s.close();
+		return null;
 
 	}
 
 	@Override
-	public String update_category(Category categoryid) {
+	public String delete_category(int categoryid) {
+		System.out.println(categoryid);
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		Category c =  (Category)s.get(Category.class, categoryid);
+		s.delete(c);
+		t.commit();
+		s.close();
 		return null;
-		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public String delete_category(Category categoryid) {
-		return null;
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public String readsingle_category(Category categoryid) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public String viewCategory() {
@@ -72,6 +75,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 		t.commit();
 		s.close();
 		return categorylistgson;
+	}
+
+	@Override
+	public Category viewOneCategory(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
