@@ -1,6 +1,8 @@
 package com.niit.ca.DAO;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.niit.ca.model.User;
@@ -13,5 +15,6 @@ public interface UserDAO {
 	public String readsingle_user(User u);
 	public String update_user(User u);
 	public String delete_user(User u);
+	public List<User> ListUser();
 	
 }

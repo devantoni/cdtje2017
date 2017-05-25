@@ -1,3 +1,4 @@
+com\niit\ca\model\Login.class
 com\niit\ca\model\Category.class
 com\niit\ca\controller\UserController.class
 com\niit\ca\DAO\CategoryDAO.class

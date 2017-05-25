@@ -1,5 +1,7 @@
 package com.niit.ca.DAOImpl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -53,6 +55,13 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<User> ListUser() {
+		// TODO Auto-generated method stub
+		List<User> list = sessionfactory.getCurrentSession().createQuery("from User u").list();
+		return list;
 	}
 
 }

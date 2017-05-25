@@ -4,9 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.ca.model.Category;
-import com.niit.ca.model.Product;
-import com.niit.ca.model.Supplier;
 import com.niit.ca.model.User;
 
 @Controller
@@ -27,11 +24,7 @@ public class ViewsController {
 	{
 		return "contact";
 	}
-	@RequestMapping(value="/login")
-	public String gotologin()
-	{
-		return "login";
-	}
+	
 	
 	@RequestMapping(value="/register")
 	public ModelAndView gotoregister(User u)

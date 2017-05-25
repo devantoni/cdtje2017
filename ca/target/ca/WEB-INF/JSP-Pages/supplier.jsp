@@ -61,6 +61,11 @@
 					<form:form modelAttribute="Supplier" action="addsupplier" method="post">
 						<div class="row">
 							<div class="col-md-12">
+								<c:if test="${!check}">
+									<div class="form-group">
+										<form:input class="form-control" type="hidden" path="Supplierid" ></form:input>
+									</div>
+								</c:if>
 								<div class="form-group">
 									<form:input type="text" class="form-control"
 										placeholder="Supplier Name" path="suppliername" required="true"></form:input>
@@ -75,6 +80,10 @@
 							<div class="col-md-12">
 								<button type="submit" class="btn btn-primary pull-right"
 									id="btnCategory">Create Supplier</button>
+								<c:if test="${!check}">
+								<form:button id="editbuttons" type="submit" name="EditCategory"
+								class="btn">Edit Category</form:button>
+								</c:if>
 							</div>
 						</div>
 					</form:form>

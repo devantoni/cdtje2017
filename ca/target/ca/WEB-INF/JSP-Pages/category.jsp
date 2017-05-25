@@ -56,10 +56,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well well-sm">
-					<form:form modelAttribute="Category" action="addcategory"
+					<form:form modelAttribute="CategoryObject" action="addcategory"
 						method="post">
 						<div class="row">
 							<div class="col-md-12">
+								<c:if test="${!check}">
+									<div class="form-group">
+										<form:input class="form-control" type="hidden" path="Categoryid" ></form:input>
+									</div>
+								</c:if>
 								<div class="form-group">
 									<form:input type="text" class="form-control"
 										placeholder="Category Name" path="categoryname"
@@ -75,7 +80,11 @@
 
 							<div class="col-md-12">
 								<button type="submit" class="btn btn-primary pull-right"
-									id="btnCategory">Create Category</button>
+									id="btnCategory" name="AddCategory">Create Category</button>
+								<c:if test="${!check}">
+								<form:button id="editbuttons" type="submit" name="EditCategory"
+								class="btn">Edit Category</form:button>
+								</c:if>
 							</div>
 						</div>
 					</form:form>

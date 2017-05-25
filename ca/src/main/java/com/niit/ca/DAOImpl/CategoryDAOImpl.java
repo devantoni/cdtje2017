@@ -35,12 +35,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 	
 
 	@Override
-	public String update_category(Category c) {
+	public String update_category(Category cm) {
 		// TODO Auto-generated method stub
 		Session s = sessionfactory.openSession();
 		Transaction t = s.getTransaction();
 		t.begin();
-		s.update(c);
+		s.update(cm);
 		t.commit();
 		s.close();
 		return null;
@@ -79,8 +79,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public Category viewOneCategory(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		Category cm =  (Category)s.get(Category.class, id);
+		t.commit();
+		s.close();
+		return cm;
 	}
 
 }

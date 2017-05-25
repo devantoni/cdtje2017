@@ -56,11 +56,10 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public String updateProduct(int productid, Product p) {
 		// TODO Auto-generated method stub
-		System.out.println(productid);
+		System.out.println(p.getProductid());
 		Session s = sessionfactory.openSession();
 		Transaction t = s.getTransaction();
 		t.begin();
-		System.out.println(productid);
 		Product oneproductobject = (Product)s.get(Product.class,productid);
 		oneproductobject.setCategoryId(p.getCategoryId());
 		oneproductobject.setSupplierId(p.getSupplierId());

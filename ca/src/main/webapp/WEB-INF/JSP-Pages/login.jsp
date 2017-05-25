@@ -1,5 +1,7 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,16 +48,16 @@
       <div class="row">
         <div class="col-md-12">
           <div class="well well-sm">
-              <form>
+              <form action="loginauth" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="name">User Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required">
+                            <input type="text" class="form-control" id="name" path="username" placeholder="Enter name" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="name">Password</label>
-                            <input type="password" class="form-control" id="password" required="required">
+                            <input type="password" class="form-control" id="password" path="password" required="required"/>
                         </div>
                     </div>
                     <div class="col-md-12">

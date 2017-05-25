@@ -36,4 +36,13 @@ public class UserController {
 			System.out.println("see u at login");
 		return mv;
 	}
+	
+	@RequestMapping(value="/login")
+	public ModelAndView gotologin()
+	{
+		ModelAndView mv=new ModelAndView("login");
+		return mv;
+	}
+	
+	
 }

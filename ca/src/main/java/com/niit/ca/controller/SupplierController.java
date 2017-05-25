@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ca.DAO.SupplierDAO;
@@ -49,5 +50,20 @@ public class SupplierController {
 	public String removesupplier(@PathVariable("supplierid") int supplierid) {
 		sdao.delete_supplier(supplierid);
 		return "redirect:/supplier";
+	}
+	@RequestMapping(value="/addsupplier", params="EditSupplier")
+	public String editsupplier(@ModelAttribute("Supplier") Supplier sm) {
+		sdao.update_supplier(sm);
+		return "redirect:/supplier";
+	}
+	@RequestMapping("/editsupplierbutton")
+	public ModelAndView passingonesupplier(@RequestParam("getsid") int supplierid) {
+		
+		String supplierlist = sdao.viewSupplier();
+		ModelAndView mv = new ModelAndView("supplier");
+		mv.addObject("Supplier",sdao.viewOneSupplier(supplierid));
+		mv.addObject("supplierlist", supplierlist);
+		mv.addObject("check","false");
+		return mv;
 	}
 }

@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.google.gson.Gson;
 import com.niit.ca.DAO.SupplierDAO;
-import com.niit.ca.model.Category;
-import com.niit.ca.model.Product;
 import com.niit.ca.model.Supplier;
 
 @Repository
@@ -35,9 +33,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 
 	
 	@Override
-	public String update_supplier(Supplier supplierid) {
+	public String update_supplier(Supplier sm) {
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		s.update(sm);
+		t.commit();
+		s.close();
 		return null;
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -48,7 +51,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		Session s = sessionfactory.openSession();
 		Transaction t = s.getTransaction();
 		t.begin();
-		Supplier c =  (Supplier)s.get(Supplier.class, supplierid);
+		Supplier c =  s.get(Supplier.class, supplierid);
 		s.delete(c);
 		t.commit();
 		s.close();
@@ -71,9 +74,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Override
-	public Category viewOneCategory(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Supplier viewOneSupplier(int id) {
+		Session s = sessionfactory.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+		Supplier sm =  s.get(Supplier.class, id);
+		t.commit();
+		s.close();
+		return sm;
 	}
 
 }

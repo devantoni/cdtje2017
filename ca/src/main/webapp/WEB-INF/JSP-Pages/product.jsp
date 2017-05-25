@@ -65,6 +65,11 @@
 						enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-md-12">
+								<c:if test="${!check}">
+									<div class="form-group">
+										<form:input class="form-control" type="hidden" path="Productid" ></form:input>
+									</div>
+								</c:if>
 								<div class="form-group">
 									
 									<form:input type="text" class="form-control"
@@ -108,7 +113,7 @@
 										path="PImage" required="true"></form:input>
 								</div>
 								<c:if test="${check}">
-									<form:button id="editbuttons" type="submit" name="Add"
+									<form:button id="addbuttons" type="submit" name="Add"
 										class="btn">Add
 							Details</form:button>
 									<form:button id="removebuttons" type="reset" class="btn">Reset

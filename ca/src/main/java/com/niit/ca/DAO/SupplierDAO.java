@@ -2,7 +2,6 @@ package com.niit.ca.DAO;
 
 import org.springframework.stereotype.Service;
 
-import com.niit.ca.model.Category;
 import com.niit.ca.model.Supplier;
 
 @Service
@@ -15,6 +14,6 @@ public interface SupplierDAO {
 
 	public String viewSupplier();
 
-	public Category viewOneCategory(int id);
+	public Supplier viewOneSupplier(int id);
 
 }

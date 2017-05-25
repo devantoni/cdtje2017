@@ -2,6 +2,7 @@ D:\workspace\ca\src\main\java\com\niit\ca\controller\CategoryController.java
 D:\workspace\ca\src\main\java\com\niit\ca\controller\ViewsController.java
 D:\workspace\ca\src\main\java\com\niit\ca\DAOImpl\CategoryDAOImpl.java
 D:\workspace\ca\src\main\java\com\niit\ca\DAOImpl\SupplierDAOImpl.java
+D:\workspace\ca\src\main\java\com\niit\ca\model\Login.java
 D:\workspace\ca\src\main\java\com\niit\ca\model\Supplier.java
 D:\workspace\ca\src\main\java\com\niit\ca\controller\SupplierController.java
 D:\workspace\ca\src\main\java\com\niit\ca\DAOImpl\ProductDAOImpl.java

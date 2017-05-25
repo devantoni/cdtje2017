@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -86,13 +85,14 @@ public class ProductController {
 		mv.addObject("productlist", productlist);
 		mv.addObject("supplierslist", supplierlist);
 		mv.addObject("categorylist", categorylist);
-		mv.addObject("check", "true");
+		mv.addObject("check", "false");
 		return mv;
 	}
 	
 	
 	@RequestMapping(value = "/addproduct", params="Edit")
 	public String update_product(@ModelAttribute("ProductObject") Product p) {
+		System.out.println("inside update"+p.getProductid());
 		prdao.updateProduct(p.getProductid(), p);
 		String path = "D:\\workspace\\ca\\src\\main\\webapp\\resources\\Pimage\\";
 		path = path + String.valueOf(p.getProductid()) + "" + ".jpg";
